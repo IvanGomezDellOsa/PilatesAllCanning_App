@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  # 1. Base de Datos (PAC - Pilates All Canning)
+  postgres:
+    image: postgres:16-alpine
+    container_name: pac-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: your_user # Credenciales reales removidas para versión pública
+      POSTGRES_PASSWORD: your_password
+      POSTGRES_DB: your_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # 2. Administrador visual (PgAdmin)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pac-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com # Credenciales reales removidas para versión pública
+      PGADMIN_DEFAULT_PASSWORD: your_password
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+  # 3. API Backend (Comentado hasta tener el código Python)
+  # backend:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   container_name: pac-api
+  #   restart: unless-stopped
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - "8000:8000"
+  #   volumes:
+  #     - ./app:/app/app
+  #     - ./alembic:/app/alembic
+  #   depends_on:
+  #     - postgres
+  #   command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+volumes:
+  postgres_data:

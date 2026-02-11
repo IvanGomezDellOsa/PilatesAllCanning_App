@@ -1,0 +1,27 @@
+# ------- CORE -------
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+sqlmodel==0.0.18          
+asyncpg==0.29.0
+alembic==1.13.1
+
+# ------- AUTH -------
+firebase-admin==6.5.0
+PyJWT==2.8.0
+
+# ------- UTILS -------
+Pillow==10.3.0
+pillow-heif==0.16.0
+python-multipart==0.0.9
+email-validator==2.1.1
+httpx==0.27.0
+python-dateutil==2.9.0
+python-dotenv==1.0.0
+
+# ------- TESTS -------
+pytest==8.2.1
+pytest-asyncio==0.23.7
+factory-boy==3.3.0
+
+# ------- PROD TOOLS -------
+gunicorn==22.0.0

@@ -1,0 +1,59 @@
+# ========================
+# SISTEMA Y IDEs
+# ========================
+.DS_Store
+Thumbs.db
+.history
+*.swp
+
+# ========================
+# SECRETS (CRÍTICO)
+# ========================
+.env
+.env.*
+!.env.example
+**/secrets/
+**/firebase_credentials.json
+**/google-services.json
+**/GoogleService-Info.plist
+**/firebase_options.dart
+
+# ========================
+# PYTHON
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ========================
+# FLUTTER/DART
+# ========================
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+coverage/
+
+# ========================
+# BUILD ARTIFACTS
+# ========================
+*.log
+*.sqlite3
+postgres_data/
+node_modules/
+
+# ========================
+# IDE
+# ========================
+.idea/
+.vscode/
+*.iml
