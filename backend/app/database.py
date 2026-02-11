@@ -18,7 +18,12 @@ if not DATABASE_URL:
 
 # Motor Asíncrono
 # echo=True imprime las queries SQL en consola (útil para debug, deshabilitar en prod)
-engine = create_async_engine(DATABASE_URL, echo=True, future=True, pool_pre_ping=True)
+engine = create_async_engine(
+    DATABASE_URL,
+    echo=os.getenv("DB_ECHO", "false").lower() == "true",
+    future=True,
+    pool_pre_ping=True,
+)
 
 # Fábrica de Sesiones
 async_session_factory = async_sessionmaker(

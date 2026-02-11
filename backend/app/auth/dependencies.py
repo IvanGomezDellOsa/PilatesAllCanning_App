@@ -28,7 +28,7 @@ async def get_current_user(
     if not token:
         raise HTTPException(status_code=401, detail="Falta el token de autorización")
 
-    decoded = verify_firebase_token(token)
+    decoded = await verify_firebase_token(token)
     email: str = decoded.get("email")
     uid: str = decoded.get("uid")
     provider_str: Optional[str] = decoded.get("firebase", {}).get("sign_in_provider")
@@ -82,7 +82,7 @@ async def get_current_user_optional(
         if not token:
             return None
 
-        decoded = verify_firebase_token(token)
+        decoded = await verify_firebase_token(token)
         email: str = decoded.get("email")
 
         if not email:

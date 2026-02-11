@@ -8,6 +8,7 @@ from app.auth.dependencies import get_current_user
 from app.models import User, ProviderType
 from app.models import Credit
 from app.api.schemas import LoginRequest, UserProfileReadV2
+from app.utils import calculate_credit_balance
 import firebase_admin
 from firebase_admin import auth, credentials
 import os
@@ -122,7 +123,6 @@ async def login_with_firebase(
             full_name=name,
             social_id=uid,
             provider=provider,
-            credits_available=0,
             is_admin=False,
             disabled=False,
         )
@@ -131,18 +131,8 @@ async def login_with_firebase(
         await session.commit()
         await session.refresh(user)
 
-    # Calculate credits dynamically
-    now = datetime.now()
-    credits_result = await session.execute(
-        select(Credit).where(Credit.user_id == user.id)
-    )
-    credits = credits_result.scalars().all()
-    balance = 0
-    for c in credits:
-        if c.amount < 0:
-            balance += c.amount
-        elif c.amount > 0 and (c.expires_at is None or c.expires_at > now):
-            balance += c.amount
+    # Calculate credits dynamically (Usando función centralizada)
+    balance = await calculate_credit_balance(session, user.id)
 
     logger.info(f"Login successful for user: {user.email}")
     return {
@@ -157,7 +147,7 @@ async def login_with_firebase(
         "has_given_feedback": user.has_given_feedback,
         "feedback_sentiment": user.feedback_sentiment,
         "medical_certificate_url": user.medical_certificate_url,
-        "credits_available": max(balance, 0),
+        "credits_available": balance,
     }
 
 
@@ -182,18 +172,8 @@ async def update_fcm_token(
     await session.commit()
     await session.refresh(current_user)
 
-    # Calculate credits available (Copy logic from login for consistency)
-    now = datetime.utcnow()
-    query_credits = select(Credit).where(Credit.user_id == current_user.id)
-    result_credits = await session.execute(query_credits)
-    credits_db = result_credits.scalars().all()
-
-    balance = 0
-    for c in credits_db:
-        if c.expires_at is None and c.amount > 0:
-            balance += c.amount
-        elif c.amount > 0 and (c.expires_at is None or c.expires_at > now):
-            balance += c.amount
+    # Calculate credits available (Usando función centralizada)
+    balance = await calculate_credit_balance(session, current_user.id)
 
     return {
         "id": str(current_user.id),
@@ -207,5 +187,5 @@ async def update_fcm_token(
         "has_given_feedback": current_user.has_given_feedback,
         "feedback_sentiment": current_user.feedback_sentiment,
         "medical_certificate_url": current_user.medical_certificate_url,
-        "credits_available": max(balance, 0),
+        "credits_available": balance,
     }

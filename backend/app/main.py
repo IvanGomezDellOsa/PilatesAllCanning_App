@@ -35,11 +35,14 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Configuración de CORS
+# Configuración de CORS (Seguridad: Restringir en prod con CORS_ORIGINS=https://midominio.com)
+cors_origins_str = os.getenv("CORS_ORIGINS", "*")
+cors_origins = [o.strip() for o in cors_origins_str.split(",")] if cors_origins_str != "*" else ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Permitir todos los orígenes en desarrollo (Seguridad: Restringir en prod)
-    allow_credentials=False,
+    allow_origins=cors_origins,
+    allow_credentials=cors_origins_str != "*",  # Solo con orígenes específicos
     allow_methods=["*"],
     allow_headers=["*"],
 )

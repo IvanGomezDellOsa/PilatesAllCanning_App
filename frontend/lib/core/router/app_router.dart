@@ -56,14 +56,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       }
 
       final user = currentUserAsync.value;
-      debugPrint(
-          "AppRouter: Checking route: ${state.matchedLocation}. User: ${user?.email}, DNI: ${user?.dni}, Loading: ${currentUserAsync.isLoading}");
-
-      if (currentUserAsync.isLoading) {
-        // Keep showing whatever we are showing until loaded?
-        // Or if we are in login and loading, maybe we just wait.
-        return null;
-      }
 
       final isOnLogin = state.matchedLocation == '/login';
       final isOnOnboarding = state.matchedLocation == '/onboarding';

@@ -1,6 +1,31 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select
-from app.models import Setting
+from app.models import Setting, Credit
+from datetime import datetime
+from uuid import UUID
+
+
+async def calculate_credit_balance(session: AsyncSession, user_id: UUID) -> int:
+    """
+    Calcula el saldo de créditos de un usuario.
+    Función centralizada para evitar duplicación y garantizar consistencia.
+
+    Reglas:
+    - Créditos negativos (usos/deducciones) siempre restan.
+    - Créditos positivos suman solo si no han expirado.
+    - El resultado mínimo es 0.
+    """
+    now = datetime.now()
+    credits_result = await session.execute(
+        select(Credit).where(Credit.user_id == user_id)
+    )
+    balance = 0
+    for c in credits_result.scalars().all():
+        if c.amount < 0:
+            balance += c.amount
+        elif c.amount > 0 and (c.expires_at is None or c.expires_at > now):
+            balance += c.amount
+    return max(balance, 0)
 
 
 async def get_setting_int(

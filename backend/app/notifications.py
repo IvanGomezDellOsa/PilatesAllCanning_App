@@ -92,8 +92,9 @@ async def _handle_failed_tokens_manual(tokens_to_remove: List[str]):
                     {"token": tokens_to_remove[0]},
                 )
             else:
+                # Use ANY() with array for asyncpg compatibility (IN :tuple doesn't work)
                 await conn.execute(
-                    text("UPDATE users SET fcm_token = NULL WHERE fcm_token IN :tokens"),
-                    {"tokens": tuple(tokens_to_remove)},
+                    text("UPDATE users SET fcm_token = NULL WHERE fcm_token = ANY(:tokens)"),
+                    {"tokens": tokens_to_remove},
                 )
 

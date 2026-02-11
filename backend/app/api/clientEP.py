@@ -12,7 +12,7 @@ from fastapi import (
 )
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select, func
-from sqlalchemy import or_
+from sqlalchemy import or_, text
 from typing import List, Optional
 from datetime import datetime, timedelta
 import shutil
@@ -313,7 +313,7 @@ async def delete_my_account(
         current_user.medical_certificate_url = None
 
         # 2. Email único y anónimo
-        timestamp = int(datetime.utcnow().timestamp())
+        timestamp = int(datetime.now().timestamp())
         current_user.email = (
             f"deleted_{current_user.id}_{timestamp}@pilatesallcanning.com"
         )
@@ -348,8 +348,6 @@ async def delete_my_account(
         logger.error(f"Error deleting user: {e}")
         await session.rollback()
         raise HTTPException(500, detail="Error interno al eliminar cuenta")
-
-    return {"status": "deleted"}
 
 
 import pillow_heif  # Importar para soporte HEIC
@@ -598,7 +596,12 @@ async def book_class(
     if balance < 1:
         raise HTTPException(400, detail="No tienes créditos disponibles")
 
-    # 5. Validación: Cupo disponible
+    # 5. Validación: Cupo disponible (CON LOCK PESIMISTA)
+    # SELECT FOR UPDATE previene race condition cuando 2 usuarios reservan el último cupo
+    await session.execute(
+        text("SELECT 1 FROM gym_classes WHERE id = :id FOR UPDATE"),
+        {"id": class_id},
+    )
     confirmed_count = await session.scalar(
         select(func.count(Booking.id)).where(
             Booking.gym_class_id == class_id, Booking.status == BookingStatus.CONFIRMED

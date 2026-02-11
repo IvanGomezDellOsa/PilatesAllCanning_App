@@ -256,7 +256,6 @@ async def create_gym_class(
 
 
 @router.patch("/gym-classes/{class_id}")
-@router.patch("/gym-classes/{class_id}")
 async def update_gym_class(
     class_id: str = Path(...),
     name: Optional[str] = Body(None),
@@ -594,7 +593,7 @@ async def add_fixed_schedule(
         await session.commit()  # Commit inicial para tener ID del fixed
 
     # Backfill: Reservar clases futuras coincidentes
-    now = datetime.utcnow()
+    now = datetime.now()
     weekday_map = {
         "monday": 0,
         "tuesday": 1,
@@ -656,7 +655,7 @@ async def delete_fixed_schedule(
     if fixed.cancelled_at:
         raise HTTPException(400, detail="Turno fijo ya cancelado")
 
-    now = datetime.utcnow()
+    now = datetime.now()
 
     # Soft-delete del turno fijo
     fixed.cancelled_at = now
@@ -823,7 +822,7 @@ async def search_users(
 
     # Mapeamos a lista de dicts
     output = []
-    now = datetime.utcnow()
+    now = datetime.now()
 
     for user in result.scalars().all():
         data = user.model_dump()  # Convert SQLModel to dict
@@ -865,7 +864,7 @@ async def get_user_detail(
     if not user:
         raise HTTPException(404, detail="Usuario no encontrado")
 
-    now = datetime.utcnow()
+    now = datetime.now()
     credits = await session.execute(select(Credit).where(Credit.user_id == user_id))
     available = sum(
         c.amount
@@ -975,7 +974,7 @@ async def update_setting(
     if not setting:
         setting = Setting(key=key)
     setting.value = value
-    setting.updated_at = datetime.utcnow()
+    setting.updated_at = datetime.now()
     session.add(setting)
     await session.commit()
     return {"status": "updated", "key": key, "value": value}
@@ -1000,7 +999,7 @@ async def admin_cancel_booking(
     if booking.status != BookingStatus.CONFIRMED:
         raise HTTPException(400, detail="La reserva no está confirmada")
 
-    now = datetime.utcnow()
+    now = datetime.now()
     booking.status = BookingStatus.CANCELLED
     booking.cancelled_at = now
     session.add(booking)
@@ -1151,7 +1150,6 @@ async def toggle_user_admin(
     user.is_admin = not user.is_admin
     session.add(user)
     await session.commit()
-    await session.commit()
     return {"status": "updated", "is_admin": user.is_admin}
 
 
@@ -1178,7 +1176,7 @@ async def add_user_credits(
         amount=update.amount,
         user_id=UUID(user_id),
         expires_at=exp_date,
-        created_at=datetime.utcnow(),
+        created_at=datetime.now(),
     )
     session.add(credit)
     await session.commit()
