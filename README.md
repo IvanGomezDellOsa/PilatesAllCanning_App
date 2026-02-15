@@ -67,7 +67,7 @@ Proyecto freelance completo: desde la captación del cliente hasta la entrega fi
 
 
 
-## 📸 Demo MVP
+## 📸 Demo MVP (Click en imagen para ver en YouTube)
 
 [![Demo MVP — PilatesAllCanning](https://img.youtube.com/vi/EVlTbLLV_NU/hqdefault.jpg)](https://youtu.be/EVlTbLLV_NU?si=2hsUCER-hNNN0GqR)
 
