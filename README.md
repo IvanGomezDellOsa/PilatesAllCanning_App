@@ -1,4 +1,4 @@
-# PilatesAllCanning — App de Gestión Completa para Franquicia de Pilates (Freelance)
+# PilatesAllCanning — App de Gestión de Reservas para Franquicia de Pilates
 
 Sistema de gestión completo desarrollado con **Flutter + Python (FastAPI) + PostgreSQL + Firebase** para una franquicia de gimnasios de pilates en Argentina. Incluye app multiplataforma (iOS, Android, Web) para alumnos y panel de administración.
 
@@ -51,7 +51,10 @@ Proyecto freelance completo: desde la captación del cliente hasta la entrega fi
 
 **Administración**
 - Panel de administrador completo con estado de feedback por usuario (positivo/negativo/sin respuesta)
+- Vista de calendario mensual con el historial de clases dictadas y su nivel de ocupación (mes actual y anterior)
+- Rifa mensual entre alumnos activos, ponderada por asistencia (más reservas confirmadas en el mes = más chances), para incentivar la constancia
 - Configuración global (pausar reservas, ajustar parámetros)
+- Gestión dinámica de feriados desde la app: alta y baja de días no laborables sin necesidad de deploy, reflejados en el calendario y respetados en el auto-booking de clases recurrentes
 - Diseño que impide que los alumnos rompan el orden del negocio, y panel de administrador intuitivo para evitar errores de gestión
 
 **Seguridad y acceso**
@@ -111,9 +114,11 @@ PilatesAllCanning/
 │       │   ├── admin/
 │       │   │   └── presentation/
 │       │   │       ├── admin_home_screen.dart
+│       │   │       ├── admin_calendar_screen.dart
 │       │   │       ├── admin_users_screen.dart
 │       │   │       ├── admin_settings_screen.dart
 │       │   │       ├── admin_announcements_screen.dart
+│       │   │       ├── admin_raffle_screen.dart
 │       │   │       └── admin_user_bookings_screen.dart
 │       │   ├── auth/
 │       │   │   └── presentation/  # Login, registro
