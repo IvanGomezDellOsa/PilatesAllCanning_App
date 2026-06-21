@@ -20,6 +20,12 @@ Proyecto freelance completo: desde la captación del cliente hasta la entrega fi
 
 ---
 
+## 📸 Demo MVP (Click en imagen para ver en YouTube)
+
+[![Demo MVP — PilatesAllCanning](https://img.youtube.com/vi/EVlTbLLV_NU/hqdefault.jpg)](https://youtu.be/EVlTbLLV_NU?si=2hsUCER-hNNN0GqR)
+
+---
+
 **Algunas de las funcionalidades y problemas de negocio que resuelve:**
 
 **Reservas y clases**
@@ -69,12 +75,6 @@ Proyecto freelance completo: desde la captación del cliente hasta la entrega fi
 > ⚠️ **Versión pública recortada**: Este repositorio es una selección segura del código para portfolio. El proyecto original es más extenso y está sanitizado por privacidad del cliente. Para acceso al repositorio completo (100% funcional), escribir por privado.
 
 
-
-## 📸 Demo MVP (Click en imagen para ver en YouTube)
-
-[![Demo MVP — PilatesAllCanning](https://img.youtube.com/vi/EVlTbLLV_NU/hqdefault.jpg)](https://youtu.be/EVlTbLLV_NU?si=2hsUCER-hNNN0GqR)
-
----
 
 ## 📁 Estructura del Proyecto (Original Completo)
 
