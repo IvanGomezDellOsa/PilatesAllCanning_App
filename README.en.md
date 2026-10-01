@@ -22,9 +22,9 @@ A complete freelance project: from client acquisition to final delivery. I worke
 
 ---
 
-## 🎬 Video (click the image to watch on YouTube)
+## 🎬 Presentation video (click the image to watch on YouTube)
 
-[![Video — SeViVe](https://img.youtube.com/vi/nI6Iz2L-hFs/hqdefault.jpg)](https://youtu.be/nI6Iz2L-hFs)
+[![Presentation video — SeViVe](https://img.youtube.com/vi/nI6Iz2L-hFs/hqdefault.jpg)](https://youtu.be/nI6Iz2L-hFs)
 
 ---
 
