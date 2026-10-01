@@ -22,9 +22,9 @@ A complete freelance project: from client acquisition to final delivery. I worke
 
 ---
 
-## 📸 MVP Demo (Click the image to watch on YouTube)
+## 🎬 Video (click the image to watch on YouTube)
 
-[![Demo MVP — PilatesAllCanning](https://img.youtube.com/vi/EVlTbLLV_NU/hqdefault.jpg)](https://youtu.be/EVlTbLLV_NU?si=2hsUCER-hNNN0GqR)
+[![Video — SeViVe](https://img.youtube.com/vi/nI6Iz2L-hFs/hqdefault.jpg)](https://youtu.be/nI6Iz2L-hFs)
 
 ---
 
