@@ -2,9 +2,9 @@
 
 # PilatesAllCanning — App de Gestión de Reservas para Franquicia de Pilates
 
-Sistema de gestión completo desarrollado con **Flutter + Python (FastAPI) + PostgreSQL + Firebase** para una franquicia de gimnasios de pilates en Argentina. Incluye app multiplataforma (iOS, Android, Web) para alumnos y panel de administración.
+Sistema de gestión completo desarrollado con **Flutter + Python (FastAPI) + PostgreSQL + Firebase** para una franquicia de gimnasios de pilates en Argentina. Incluye una aplicación instalable como PWA para alumnos y un panel de administración.
 
-Proyecto freelance completo: desde la captación del cliente hasta la entrega final. Trabajé como único developer, definiendo requisitos directamente con el cliente, proponiendo funcionalidades y tomando decisiones de producto. El objetivo: una app funcional, fácil de usar, que permita delegar y organizar la gestión de la franquicia.
+Proyecto freelance completo: desde la captación del cliente hasta la puesta en producción. Trabajé como único developer, definiendo requisitos directamente con el cliente, proponiendo funcionalidades y tomando decisiones de producto. El objetivo: una app funcional, fácil de usar, que permita delegar y organizar la gestión de la franquicia.
 
 ---
 
@@ -15,7 +15,7 @@ Proyecto freelance completo: desde la captación del cliente hasta la entrega fi
 | **Frontend** | Flutter 3.x, Riverpod, Freezed, GoRouter, Dio |
 | **Backend** | Python, FastAPI (async), SQLModel, asyncpg |
 | **Base de datos** | PostgreSQL 16, Alembic |
-| **Auth** | Firebase Authentication (Google, Apple) |
+| **Auth** | Firebase Authentication (Google) |
 | **Storage** | Firebase Storage |
 | **Notifications** | Firebase Cloud Messaging |
 | **Infra** | Docker Compose, Nginx, Hetzner VPS|
@@ -70,7 +70,7 @@ Proyecto freelance completo: desde la captación del cliente hasta la entrega fi
 - Cambio de email por administrador: si un alumno pierde acceso a su correo, el administrador puede actualizarlo sin que pierda su cuenta ni su historial
 
 **Infraestructura**
-- App multiplataforma Flutter (iOS, Android, Web) desde un mismo codebase
+- Aplicación Flutter instalable como PWA
 - Backend async con Docker Compose, Nginx y PostgreSQL
 - Deploy en VPS optimizado para bajo costo operativo
 
@@ -148,7 +148,7 @@ PilatesAllCanning/
 
 **Metodología:** Desarrollo asistido por LLMs para maximizar velocidad de ejecución, análisis de errores, generación de documentación, diseño frontend, widgets y sintaxis. La arquitectura, lógica de negocio, validaciones de concurrencia y decisiones de producto fueron definidas por mí.
 
-**Resultado:** MVP funcional entregado a cliente real, corriendo en producción con costo operativo mínimo (~$4/mes).
+**Resultado:** aplicación en producción con más de 200 usuarios. Finalizado el desarrollo, continúo a cargo del soporte, la administración del servidor y las actualizaciones solicitadas por el cliente.
 
 ---
 
