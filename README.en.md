@@ -1,10 +1,10 @@
 [English](README.en.md) | [Español](README.md)
 
-# PilatesAllCanning — Booking Management App for a Pilates Franchise
+# SeViVe (formerly Pilates All Canning) — Booking and management application for a pilates studio
 
-A complete management system built with **Flutter + Python (FastAPI) + PostgreSQL + Firebase** for a pilates gym franchise in Argentina. It includes an application installable as a PWA for students and an administration panel.
+A complete management system built with **Flutter + Python (FastAPI) + PostgreSQL + Firebase** for a pilates studio (franchise) in Canning, Buenos Aires. It includes an application installable as a PWA for students and an administration panel.
 
-A complete freelance project: from client acquisition to production launch. I worked as the sole developer, defining requirements directly with the client, proposing features and making product decisions. The goal: a functional, easy-to-use app that allows delegating and organizing the management of the franchise.
+A complete freelance project: from client acquisition to production launch. I worked as the sole developer, defining requirements directly with the client, proposing features and making product decisions. The goal: a functional, easy-to-use app that allows delegating and organizing the management of the studio.
 
 ---
 
@@ -42,9 +42,10 @@ A complete freelance project: from client acquisition to production launch. I wo
 - Student categories: regular student, student without app (Shadow User created by the administrator), trial student (attends a trial class, with no membership or commitment — not allowed to book or cancel classes)
 - Complete class history (attended, cancelled, upcoming) visible to administrators per student and to each student for their own data
 - Blocking/unblocking users with automatic cancellation of future bookings
-- Account deletion by the user (Google Play / App Store requirement)
+- Account deletion by the user
 - Automatic account merge: the administrator can create a Shadow User (name + DNI) for students who do not yet have the app, keeping the real projection of slots and statistics. When that student registers and enters their DNI, the app detects the match and automatically merges both accounts, preserving fixed slots, credits and all previous history
 - Instructor management (full CRUD)
+- Email change by the administrator: if a student loses access to their email, the administrator can update it without them losing their account or their history
 
 **Credits and payments**
 - Credit system with expiration and automatic deduction per booking
@@ -64,10 +65,6 @@ A complete freelance project: from client acquisition to production launch. I wo
 - Global configuration (pause bookings, adjust parameters)
 - Dynamic holiday management from the app: adding and removing non-working days without the need for a deploy, reflected in the calendar and respected in the auto-booking of recurring classes
 - Design that prevents students from breaking the order of the business, and an intuitive administrator panel to avoid management errors
-
-**Security and access**
-- Master password at onboarding: without a code previously provided by the administrator, registration is not possible — preventing users from outside the gym
-- Email change by the administrator: if a student loses access to their email, the administrator can update it without them losing their account or their history
 
 **Infrastructure**
 - Flutter application installable as a PWA
@@ -156,6 +153,7 @@ PilatesAllCanning/
 
 **Iván Gómez Dell'Osa**
 
+- Web: [ivangomezdellosa.com.ar](https://www.ivangomezdellosa.com.ar)
 - LinkedIn: [ivangomezdellosa](https://www.linkedin.com/in/ivangomezdellosa/)
 - Email: [ivangomezdellosa@gmail.com](mailto:ivangomezdellosa@gmail.com)
 - GitHub: [IvanGomezDellOsa](https://github.com/IvanGomezDellOsa)

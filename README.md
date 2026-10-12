@@ -1,10 +1,10 @@
 [Español](README.md) | [English](README.en.md)
 
-# PilatesAllCanning — App de Gestión de Reservas para Franquicia de Pilates
+# SeViVe (ex Pilates All Canning) — Aplicación de reservas y gestión para un estudio de pilates
 
-Sistema de gestión completo desarrollado con **Flutter + Python (FastAPI) + PostgreSQL + Firebase** para una franquicia de gimnasios de pilates en Argentina. Incluye una aplicación instalable como PWA para alumnos y un panel de administración.
+Sistema de gestión completo desarrollado con **Flutter + Python (FastAPI) + PostgreSQL + Firebase** para un estudio de pilates (franquicia) de Canning, Buenos Aires. Incluye una aplicación instalable como PWA para alumnos y un panel de administración.
 
-Proyecto freelance completo: desde la captación del cliente hasta la puesta en producción. Trabajé como único developer, definiendo requisitos directamente con el cliente, proponiendo funcionalidades y tomando decisiones de producto. El objetivo: una app funcional, fácil de usar, que permita delegar y organizar la gestión de la franquicia.
+Proyecto freelance completo: desde la captación del cliente hasta la puesta en producción. Trabajé como único developer, definiendo requisitos directamente con el cliente, proponiendo funcionalidades y tomando decisiones de producto. El objetivo: una app funcional, fácil de usar, que permita delegar y organizar la gestión del estudio.
 
 ---
 
@@ -42,9 +42,10 @@ Proyecto freelance completo: desde la captación del cliente hasta la puesta en 
 - Categorías de alumno: alumno regular, alumno sin app (Shadow User creado por administrador), alumno de prueba (asiste a una clase de prueba, sin abono ni compromiso — no tiene habilitado reservar ni cancelar clases)
 - Historial completo de clases (asistidas, canceladas, próximas) visible para administradores por alumno y para cada alumno sobre sus propios datos
 - Bloqueo/desbloqueo de usuarios con cancelación automática de reservas futuras
-- Eliminación de cuenta por el usuario (requisito Google Play / App Store)
+- Eliminación de cuenta por el usuario
 - Merge automático de cuentas: el administrador puede crear un Shadow User (nombre + DNI) para alumnos que aún no tienen la app, manteniendo la proyección real de cupos y estadísticas. Cuando ese alumno se registra e ingresa su DNI, la app detecta la coincidencia y fusiona automáticamente ambas cuentas, preservando turnos fijos, créditos y todo el historial previo
 - Gestión de instructores (CRUD completo)
+- Cambio de email por administrador: si un alumno pierde acceso a su correo, el administrador puede actualizarlo sin que pierda su cuenta ni su historial
 
 **Créditos y pagos**
 - Sistema de créditos con vencimiento y descuento automático por reserva
@@ -64,10 +65,6 @@ Proyecto freelance completo: desde la captación del cliente hasta la puesta en 
 - Configuración global (pausar reservas, ajustar parámetros)
 - Gestión dinámica de feriados desde la app: alta y baja de días no laborables sin necesidad de deploy, reflejados en el calendario y respetados en el auto-booking de clases recurrentes
 - Diseño que impide que los alumnos rompan el orden del negocio, y panel de administrador intuitivo para evitar errores de gestión
-
-**Seguridad y acceso**
-- Contraseña maestra en el onboarding: sin un código proporcionado previamente por el administrador, no es posible registrarse — evita usuarios ajenos al gimnasio
-- Cambio de email por administrador: si un alumno pierde acceso a su correo, el administrador puede actualizarlo sin que pierda su cuenta ni su historial
 
 **Infraestructura**
 - Aplicación Flutter instalable como PWA
@@ -156,6 +153,7 @@ PilatesAllCanning/
 
 **Iván Gómez Dell'Osa**
 
+- Web: [ivangomezdellosa.com.ar](https://www.ivangomezdellosa.com.ar)
 - LinkedIn: [ivangomezdellosa](https://www.linkedin.com/in/ivangomezdellosa/)
 - Email: [ivangomezdellosa@gmail.com](mailto:ivangomezdellosa@gmail.com)
 - GitHub: [IvanGomezDellOsa](https://github.com/IvanGomezDellOsa)
